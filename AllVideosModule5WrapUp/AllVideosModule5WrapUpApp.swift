@@ -12,6 +12,7 @@ struct AllVideosModule5WrapUpApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(VideoModel())
         }
     }
 }

@@ -47,11 +47,14 @@ struct ContentView: View {
                     
                 }
                 
+                // Spacer to push everything up
+                Spacer()
+                
             }
             
         }
         .padding()
         .navigationViewStyle(.stack)
-        
+                
     }
 }

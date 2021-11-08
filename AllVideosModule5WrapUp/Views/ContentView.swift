@@ -20,8 +20,8 @@ struct ContentView: View {
         NavigationView {
             VStack (alignment: .leading, spacing: 20) {
                 // MARK: - Video Title
-//                Text("All Videos")
-//                    .font(.title)
+                Text("All Videos")
+                    .font(.title)
                 
                 // MARK: - Search Bar
                 SearchView(searchString: $searchText)
@@ -40,7 +40,7 @@ struct ContentView: View {
                                 // Displays the video with a title and divider line
                                 VideoItemView(selectedVideo: video)
                             }
-                            //
+                            // Else if the video title contains the text searched for, then display it
                             else if video.title.contains(searchText) {
                                 
                                 VideoItemView(selectedVideo: video)
@@ -60,8 +60,8 @@ struct ContentView: View {
         }
             .padding()
             .navigationViewStyle(.stack)
-            .navigationBarHidden(true)
-            .navigationTitle(Text("All Videos"))
+//            .navigationBarHidden(true)
+//            .navigationTitle(Text("All Videos"))
 
     }
 }

@@ -12,12 +12,20 @@ struct ContentView: View {
     // Inherits the VideoModel from the top-most view
     @EnvironmentObject var model: VideoModel
     
+    // Tracks the text our user searches for
+    @State private var searchText = ""
+    
     var body: some View {
         
         NavigationView {
             VStack (alignment: .leading, spacing: 20) {
-                Text("All Videos")
-                    .font(.title)
+                // MARK: - Video Title
+//                Text("All Videos")
+//                    .font(.title)
+                
+                // MARK: - Search Bar
+                SearchView(searchString: $searchText)
+                
                 
                 // MARK: - Video List
                 ScrollView {
@@ -27,19 +35,16 @@ struct ContentView: View {
                         // Loop through videos here 
                         ForEach(model.videos) { video in
                             
-                            NavigationLink {
-                                VideoView()
-                                    .onAppear {
-                                        model.setCurrentVideo(videoId: video.id)
-                                    }
-                            } label: {
-                                Text(video.title)
-                                    .padding(.bottom, 5)
+                            // If the search text is empty, then display everything
+                            if searchText == "" {
+                                // Displays the video with a title and divider line
+                                VideoItemView(selectedVideo: video)
                             }
-                            .tint(.black)
-                            
-                            // Horizontal divider
-                            Divider()
+                            //
+                            else if video.title.contains(searchText) {
+                                
+                                VideoItemView(selectedVideo: video)
+                            }
 
                         }
                         
@@ -53,8 +58,10 @@ struct ContentView: View {
             }
             
         }
-        .padding()
-        .navigationViewStyle(.stack)
-                
+            .padding()
+            .navigationViewStyle(.stack)
+            .navigationBarHidden(true)
+            .navigationTitle(Text("All Videos"))
+
     }
 }

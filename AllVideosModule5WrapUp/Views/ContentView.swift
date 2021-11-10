@@ -18,14 +18,14 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            VStack (alignment: .leading, spacing: 20) {
+            VStack (alignment: .leading) {
                 // MARK: - Video Title
-                Text("All Videos")
-                    .font(.title)
+//                Text("All Videos")
+//                    .font(.title)
                 
                 // MARK: - Search Bar
                 SearchView(searchString: $searchText)
-                
+                    .padding(.bottom)
                 
                 // MARK: - Video List
                 ScrollView {
@@ -56,6 +56,7 @@ struct ContentView: View {
                 Spacer()
                 
             }
+                .navigationTitle("All Videos")
             
         }
             .padding()

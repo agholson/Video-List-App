@@ -50,7 +50,6 @@ struct SearchView: View {
                         
                     }
                 )
-                .padding(.horizontal, 10)
                 .onTapGesture {
                     self.isEditing = true
                 }
@@ -65,7 +64,7 @@ struct SearchView: View {
                 } label: {
                     Text("Cancel")
                 }
-                .padding(.trailing, 10) // Makes it 10 from the right
+//                .padding(.trailing, 10) // Makes it 10 from the right
                 .transition(.move(edge: .trailing))
                 .animation(.default)
 

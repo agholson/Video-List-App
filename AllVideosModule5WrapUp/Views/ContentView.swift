@@ -19,9 +19,6 @@ struct ContentView: View {
         
         NavigationView {
             VStack (alignment: .leading) {
-                // MARK: - Video Title
-//                Text("All Videos")
-//                    .font(.title)
                 
                 // MARK: - Search Bar
                 SearchView(searchString: $searchText)
@@ -41,7 +38,8 @@ struct ContentView: View {
                                 VideoItemView(selectedVideo: video)
                             }
                             // Else if the video title contains the text searched for, then display it
-                            else if video.title.contains(searchText) {
+                            // Make them both lowercase so we ignore case
+                            else if video.title.lowercased().contains(searchText.lowercased()) {
                                 
                                 VideoItemView(selectedVideo: video)
                             }
@@ -56,13 +54,16 @@ struct ContentView: View {
                 Spacer()
                 
             }
+                .padding(.horizontal)
+            // Makes this the title of the current VStack
                 .navigationTitle("All Videos")
+//                .navigationBarTitle("All Videos", displayMode: .inline)
             
         }
-            .padding()
             .navigationViewStyle(.stack)
 //            .navigationBarHidden(true)
 //            .navigationTitle(Text("All Videos"))
 
     }
 }
+

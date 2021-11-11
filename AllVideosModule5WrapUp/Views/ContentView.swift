@@ -57,12 +57,10 @@ struct ContentView: View {
                 .padding(.horizontal)
             // Makes this the title of the current VStack
                 .navigationTitle("All Videos")
-//                .navigationBarTitle("All Videos", displayMode: .inline)
+//                .navigationBarTitleDisplayMode(.inline)  // Makes the navigationTitle display with less space
             
         }
             .navigationViewStyle(.stack)
-//            .navigationBarHidden(true)
-//            .navigationTitle(Text("All Videos"))
 
     }
 }
